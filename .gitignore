@@ -38,4 +38,8 @@ lerna-debug.log*
 .env
 .env.local
 .env.production
+<<<<<<< HEAD
 .env.development
+=======
+.env.development
+>>>>>>> 33440adf115decc0a358e89732864469011233da
