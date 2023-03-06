@@ -39,5 +39,9 @@ lerna-debug.log*
 .env.local
 .env.production
 .env.development
-# package-lock.json
-# package.json
+
+
+package-lock.json
+package.json
+
+
