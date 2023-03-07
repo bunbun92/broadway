@@ -4,8 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmConfigService } from './config/typeorm.config.service';
-import { ContentModule } from './content/content.module';
-import { OrderSeatsModule } from './order-seats/order-seats.module';
+import { ContentModule } from './modules/content.module';
+import { OrderSeatsModule } from './modules/order-seats.module';
 
 @Module({
   imports: [
