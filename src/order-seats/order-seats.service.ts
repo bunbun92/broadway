@@ -18,8 +18,6 @@ export class OrderSeatsService {
   ) {}
 
   async getAContent(contentId: number) {
-    console.log('service' + contentId);
-
     const content = await this.contentRepository.findOne({
       where: {
         deletedAt: null,
@@ -28,5 +26,50 @@ export class OrderSeatsService {
     });
 
     return content;
+  }
+
+  async checkTimeSale(contentId: number) {
+    let today: Date = new Date();
+    let timeNow: string = this.dateToStringForQuery(today);
+
+    let query =
+      `select * from timeSale ts
+    left join contents c on c.id = ts.contentId
+    where ts.` +
+      `end` +
+      ` > "${timeNow}" and ts.contentId = ${contentId}`;
+
+    const content = await this.timeSaleRepository.query(query);
+
+    // console.log(today + '//' + timeNow);
+
+    // const content = await this.timeSaleRepository.findOne({
+    //   where: {
+    //     deletedAt: null,
+    //     id: contentId,
+    //   },
+    //   relations: ['content'],
+    // });
+
+    // console.log(timeNow < content.end);
+    // console.log(timeNow > content.end);
+    // console.log(timeNow === content.end);
+
+    // console.log(this.dateToStringForQuery(today));
+
+    return content;
+  }
+
+  dateToStringForQuery(date: Date): string {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    const result = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+    return result;
   }
 }
