@@ -5,18 +5,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmConfigService } from './config/typeorm.config.service';
 import { ContentModule } from './content/content.module';
+import { KopisApiModule } from './kopis-api/kopis-api.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useClass: TypeOrmConfigService,
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
-    ContentModule
+    ContentModule,
+    KopisApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
