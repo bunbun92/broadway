@@ -6,15 +6,15 @@ import {
 } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmConfigService } from './config/typeorm.config.service';
-import { ContentModule } from './content/content.module';
-import { OrderSeatsModule } from './order-seats/order-seats.module';
-import { UserModule } from './user/user.module';
+import { AppController } from '../controllers/app.controller';
+import { AppService } from '../services/app.service';
+import { TypeOrmConfigService } from '../config/typeorm.config.service';
+import { ContentModule } from './content.module';
+import { OrderSeatsModule } from './order-seats.module';
+import { UserModule } from './user.module';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtConfigService } from './config/jwt.config.service';
-import { AuthMiddleware } from './auth/auth.middleware';
+import { JwtConfigService } from '../config/jwt.config.service';
+import { AuthMiddleware } from '../auth/auth.middleware';
 
 @Module({
   imports: [
@@ -32,7 +32,8 @@ import { AuthMiddleware } from './auth/auth.middleware';
       inject: [ConfigService],
     }),
     ContentModule,
-    UserModule,,
+    UserModule,
+    ,
     OrderSeatsModule,
   ],
   controllers: [AppController],

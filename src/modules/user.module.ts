@@ -4,8 +4,8 @@ import { JwtModule, JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtConfigService } from 'src/config/jwt.config.service';
 import { User } from '../entities/user.entity';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
+import { UserService } from '../services/user.service';
+import { UserController } from '../controllers/user.controller';
 
 @Module({
   imports: [
