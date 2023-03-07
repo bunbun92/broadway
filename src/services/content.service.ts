@@ -5,12 +5,11 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ContentService {
+  constructor(
+    @InjectRepository(Content) private contentRepository: Repository<Content>
+  ) {}
 
-    constructor(
-        @InjectRepository(Content) private contentRepository: Repository<Content>
-    ){}
-    
-    async getAllContents(){
-        return await {"id": 1};
-    }
+  async getAllContents() {
+    return await { id: 1 };
+  }
 }
