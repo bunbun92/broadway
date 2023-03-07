@@ -15,6 +15,7 @@ import { UserModule } from './user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfigService } from '../config/jwt.config.service';
 import { AuthMiddleware } from '../auth/auth.middleware';
+import { KopisApiModule } from '../kopis-api/kopis-api.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { AuthMiddleware } from '../auth/auth.middleware';
     ContentModule,
     UserModule,
     OrderSeatsModule,
+    KopisApiModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthMiddleware],
