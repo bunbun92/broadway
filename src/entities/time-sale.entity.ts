@@ -2,8 +2,11 @@ import {
   Column,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Content } from './content.entity';
 
 @Entity({ schema: 'board', name: 'timeSale' })
 export class TimeSale {
@@ -13,10 +16,10 @@ export class TimeSale {
   @Column('int')
   contentId: number;
 
-  @Column('time')
+  @Column('datetime')
   start: string;
 
-  @Column('time')
+  @Column('datetime')
   end: string;
 
   @Column('float')
@@ -27,4 +30,8 @@ export class TimeSale {
 
   @DeleteDateColumn()
   deletedAt: Date | null;
+
+  @ManyToOne(() => Content)
+  @JoinColumn({ name: 'contentId' })
+  content: Content;
 }
